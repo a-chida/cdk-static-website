@@ -1,0 +1,55 @@
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "dockerComposeFile": "./compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "remoteUser": "${localEnv:USER}",
+    "updateRemoteUserUID": true,
+    "postCreateCommand": "npm install",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // productivity
+                "amazonwebservices.amazon-q-vscode",
+                "alefragnani.Bookmarks",
+                "formulahendry.code-runner",
+                "streetsidesoftware.code-spell-checker",
+                "adpyke.codesnap",
+                "mikestead.dotenv",
+                "EditorConfig.EditorConfig",
+                "oderwat.indent-rainbow",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "sgryjp.japanese-word-handler",
+                "ritwickdey.LiveServer",
+                "PKief.material-icon-theme",
+                "christian-kohler.path-intellisense",
+                "esbenp.prettier-vscode",
+                "Gruntfuggly.todo-tree",
+                "ICS.japanese-proofreading",
+                // for document
+                "yzhang.markdown-all-in-one",
+                "DavidAnson.vscode-markdownlint",
+                "bierner.markdown-mermaid",
+                // Git
+                "codezombiech.gitignore",
+                "mhutchie.git-graph",
+                "eamodio.gitlens",
+                // Docker
+                "ms-azuretools.vscode-docker",
+                // TypeScript
+                "dbaeumer.vscode-eslint",
+                "xabikos.JavaScriptSnippets"
+            ],
+            "settings": {
+                "amazonQ.shareContentWithAWS": false,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.formatOnSave": true,
+                "editor.guides.bracketPairs": true,
+                "editor.renderWhitespace": "all",
+                "git.autofetch": true,
+                "git.pruneOnFetch": true,
+                "workbench.iconTheme": "material-icon-theme"
+            }
+        }
+    }
+}
