@@ -26,4 +26,4 @@ RUN apt-get update && apt install -y \
     && useradd -d /home/${USERNAME} -s /bin/bash -g ${USERNAME} -m ${USERNAME} \
     && mkdir -m 777 /workspaces \
     # install npm packages
-    && npm install -g git-cz typescript
+    && npm install -g git-cz typescript aws-cdk
