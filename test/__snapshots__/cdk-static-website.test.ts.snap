@@ -88,10 +88,10 @@ exports[`CdkStaticWebsite snapshot test 1`] = `
 }
 ",
         "FunctionConfig": {
-          "Comment": "us-east-1TestStackFunction0204A443",
+          "Comment": "cdk-static-website-url-rewrite-spa",
           "Runtime": "cloudfront-js-1.0",
         },
-        "Name": "us-east-1TestStackFunction0204A443",
+        "Name": "cdk-static-website-url-rewrite-spa",
       },
       "Type": "AWS::CloudFront::Function",
     },

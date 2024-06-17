@@ -5,6 +5,8 @@ import * as iam from "aws-cdk-lib/aws-iam";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 
+const PREFIX = "cdk-static-website";
+
 export class CdkStaticWebsiteStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -13,13 +15,14 @@ export class CdkStaticWebsiteStack extends cdk.Stack {
     const s3Bucket = new s3.Bucket(this, "S3Bucket", {
       autoDeleteObjects: true,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
-      bucketName: "cdk-static-website-origin",
+      bucketName: `${PREFIX}-origin`,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
     // CloudFront
     const origin = new origins.S3Origin(s3Bucket);
     const cfFunction = new cloudfront.Function(this, "Function", {
+      functionName: `${PREFIX}-url-rewrite-spa`,
       code: cloudfront.FunctionCode.fromFile({
         filePath: "cloudfront-function/url-rewrite-spa.js",
       }),
