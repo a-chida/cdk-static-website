@@ -19,8 +19,21 @@ export class CdkStaticWebsiteStack extends cdk.Stack {
 
     // CloudFront
     const origin = new origins.S3Origin(s3Bucket);
+    const cfFunction = new cloudfront.Function(this, "Function", {
+      code: cloudfront.FunctionCode.fromFile({
+        filePath: "cloudfront-function/url-rewrite-spa.js",
+      }),
+    });
     const distribution = new cloudfront.Distribution(this, "distribution", {
-      defaultBehavior: { origin: origin },
+      defaultBehavior: {
+        origin: origin,
+        functionAssociations: [
+          {
+            eventType: cloudfront.FunctionEventType.VIEWER_REQUEST,
+            function: cfFunction,
+          },
+        ],
+      },
       defaultRootObject: "index.html",
       geoRestriction: cloudfront.GeoRestriction.allowlist("JP"),
       httpVersion: cloudfront.HttpVersion.HTTP2_AND_3,
